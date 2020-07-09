@@ -1,4 +1,4 @@
-/* Corpse of Sentences:
+/* Corpus of Sentences:
 English :10
 Hindi : */
 
@@ -30,4 +30,24 @@ var sentence = '{"English":['+
         '"e":"कुत्ता सो गया बिल्लियों को मारकर", "f":"कुत्ता सो गया मारकर बिल्लियों को", "g":"सो गया कुत्ता बिल्लियों को मारकर", "h":"सो गया कुत्ता मारकर बिल्लियों को"},'+
     '{"a":"एक लाल किताब वहाँ है", "b":"एक लाल किताब है वहाँ", "c":"वहाँ है एक लाल किताब", "d":"है वहाँ एक लाल किताब"},'+
     '{"a":"एक बड़ी सी किताब वहाँ है", "b":"एक बड़ी सी किताब है वहाँ", "c":"बड़ी सी एक किताब वहाँ है", "d":"बड़ी सी एक किताब है वहाँ", "e":"वहाँ है एक बड़ी सी किताब",'+
-        '"f":"वहाँ है बड़ी सी एक किताब", "g":"है वहाँ एक बड़ी सी किताब", "h":"है वहाँ बड़ी सी एक किताब"}]}';    
+        '"f":"वहाँ है बड़ी सी एक किताब", "g":"है वहाँ एक बड़ी सी किताब", "h":"है वहाँ बड़ी सी एक किताब"}]}';   
+
+/*
+obj = JSON.parse(text);
+document.getElementById("demo").innerHTML =
+obj.English[0].a + " " + obj.Hindi[0].a;
+*/
+
+function exp_top(language){
+    if(language == "null"){
+        alert('Select a Language');
+        document.getElementById("experiment-top").style.display = "none";
+        document.getElementById("experiment-line").style.display = "none";
+        return false;
+    }
+    else if(language == "english" || language == "hindi"){
+        document.getElementById("experiment-top").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
+        document.getElementById("experiment-line").innerHTML = "(select the buttons in proper order)";
+        return true;
+    }
+}
