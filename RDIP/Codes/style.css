@@ -78,13 +78,13 @@ select{
     margin-top:100px;
 }
 
-#experiment-top{
+#experiment-top, #second-msg{
     color: #0000AA;
     font-size: 16px;
     font-weight: 800;
 }
 
-#experiment-line{
+#experiment-line, #second-line{
     color: #0000FF;
     font-size: 14px;
 }
@@ -96,4 +96,9 @@ select{
 #experiment-sentence button{
     cursor: pointer;
     margin:10px;
+}
+
+#formed-sentence{
+    font-size: 30px;
+    color: #444444;
 }

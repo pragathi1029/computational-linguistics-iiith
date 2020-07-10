@@ -40,6 +40,8 @@ obj.English[0].a + " " + obj.Hindi[0].a;
 
 var language="";
 var current_sentence = "";
+var formed_sentence = "";
+var question = 0;
 var sentences = JSON.parse(sentence);
 
 function initialize(){
@@ -48,19 +50,15 @@ function initialize(){
 }
 
 function exp_top(){
+    clear();
     language = document.getElementById('language').options[document.getElementById('language').selectedIndex].text;
     if(language == "---Select Language---"){
         alert('Select a Language');
-        document.getElementById("experiment-top").style.display = "none";
-        document.getElementById("experiment-line").style.display = "none";
-        document.getElementById("experiment-sentence").style.display = "none";
+        set_display("none");
         return false;
     }
     else if(language == "English" || language == "Hindi"){
-        document.getElementById("experiment-top").style.display = "initial";
-        document.getElementById("experiment-line").style.display = "initial";
-        document.getElementById("experiment-sentence").style.display = "initial";
-
+        set_display("initial");
         document.getElementById("experiment-top").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
         document.getElementById("experiment-line").innerHTML = "(select the buttons in proper order)";
         sentence_selection(language);
@@ -70,23 +68,30 @@ function exp_top(){
 function sentence_selection(language){
     document.getElementById('experiment-sentence').innerHTML = "";
     if(language == "English"){
-        var question = Math.floor(Math.random() * 10);
-        current_sentence = sentence_to_buttons( sentences.English[question].a );
+        question = Math.floor(Math.random() * 10);
+        current_sentence = sentences.English[question].a;
+        sentence_to_buttons( sentences.English[question].a );
     }
     else if(language == "Hindi"){
-        var question = Math.floor(Math.random() * 7);
-        current_sentence = sentence_to_buttons( sentences.Hindi[question].a );
+        question = Math.floor(Math.random() * 7);
+        current_sentence = sentences.Hindi[question].a;
+        sentence_to_buttons( sentences.Hindi[question].a );
     }
 }
 
 function sentence_to_buttons( str ){
     var arr = str.split(" ");
     arr = shuffle(arr);
+    var j = "1";
     for(i=0;i<arr.length;i++){
         var button = document.createElement("button");
+        button.setAttribute("id",j);
+        button.setAttribute("value",arr[i]);
+        j += String(parseFloat(j) + 1);
         button.innerHTML = arr[i];
         document.getElementById('experiment-sentence').appendChild(button);
     }
+    document.getElementById('formed-sentence').value = "";
 }
 
 function shuffle(a) {
@@ -98,4 +103,36 @@ function shuffle(a) {
         a[j] = x;
     }
     return a;
+}
+
+function second_message(){
+    document.getElementById('second-msg').innerHTML = "Formed Sentence ";
+    document.getElementById('second-line').innerHTML = "(after selecting words):";
+    document.getElementById("reform-button").style.display = "initial";
+}
+
+function a(id1){
+    if(id1 == "experiment-sentence")
+        return;
+    document.getElementById('formed-sentence').innerHTML = String( document.getElementById('formed-sentence').innerHTML ) + " " + String( document.getElementById(id1).value );
+    formed_sentence = document.getElementById('formed-sentence').innerHTML;
+    document.getElementById(id1).style.display = "none";
+}
+
+function clear(){
+    language = "";
+    current_sentence = "";
+    formed_sentence = "";
+    document.getElementById("second-msg").innerHTML = "";
+    document.getElementById("second-line").innerHTML = "";
+    document.getElementById('formed-sentence').innerHTML = "";
+    document.getElementById("reform-button").style.display = "none";
+}
+
+function set_display(val){
+    document.getElementById("experiment-top").style.display = val;
+    document.getElementById("experiment-line").style.display = val;
+    document.getElementById("experiment-sentence").style.display = val;
+    document.getElementById("second-msg").style.display = val;
+    document.getElementById("second-line").style.display = val;
 }
