@@ -38,16 +38,64 @@ document.getElementById("demo").innerHTML =
 obj.English[0].a + " " + obj.Hindi[0].a;
 */
 
-function exp_top(language){
-    if(language == "null"){
+var language="";
+var current_sentence = "";
+var sentences = JSON.parse(sentence);
+
+function initialize(){
+    language = "";
+    current_sentence = "";
+}
+
+function exp_top(){
+    language = document.getElementById('language').options[document.getElementById('language').selectedIndex].text;
+    if(language == "---Select Language---"){
         alert('Select a Language');
         document.getElementById("experiment-top").style.display = "none";
         document.getElementById("experiment-line").style.display = "none";
+        document.getElementById("experiment-sentence").style.display = "none";
         return false;
     }
-    else if(language == "english" || language == "hindi"){
+    else if(language == "English" || language == "Hindi"){
+        document.getElementById("experiment-top").style.display = "initial";
+        document.getElementById("experiment-line").style.display = "initial";
+        document.getElementById("experiment-sentence").style.display = "initial";
+
         document.getElementById("experiment-top").innerHTML = "Form a sentence (Declarative or Interrogative or any other type) from the given words";
         document.getElementById("experiment-line").innerHTML = "(select the buttons in proper order)";
-        return true;
+        sentence_selection(language);
     }
+}
+
+function sentence_selection(language){
+    document.getElementById('experiment-sentence').innerHTML = "";
+    if(language == "English"){
+        var question = Math.floor(Math.random() * 10);
+        current_sentence = sentence_to_buttons( sentences.English[question].a );
+    }
+    else if(language == "Hindi"){
+        var question = Math.floor(Math.random() * 7);
+        current_sentence = sentence_to_buttons( sentences.Hindi[question].a );
+    }
+}
+
+function sentence_to_buttons( str ){
+    var arr = str.split(" ");
+    arr = shuffle(arr);
+    for(i=0;i<arr.length;i++){
+        var button = document.createElement("button");
+        button.innerHTML = arr[i];
+        document.getElementById('experiment-sentence').appendChild(button);
+    }
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
 }

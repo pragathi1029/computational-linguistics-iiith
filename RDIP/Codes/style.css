@@ -88,3 +88,12 @@ select{
     color: #0000FF;
     font-size: 14px;
 }
+
+#experiment-sentence button{
+    padding:5px;
+}
+
+#experiment-sentence button{
+    cursor: pointer;
+    margin:10px;
+}
