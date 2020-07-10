@@ -93,7 +93,7 @@ select{
     padding:5px;
 }
 
-#experiment-sentence button{
+#experiment-sentence button, #reform-button{
     cursor: pointer;
     margin:10px;
 }
