@@ -1,5 +1,5 @@
 /* 3 Corpus */
-alert("jhvf");
+
 var paragraphs = ["A mouse was having a very bad time. She could find no food at all. She looked here and there, but there was no food, and she grew very thin." +
                         " At last the mouse found a basket, full of corn. There was a small hole in the basket, and she crept in. She could just get through the "+
                         "hole. Then she began to eat the corn. Being very hungry, she ate a great deal, and went on eating and eating. She had grown very fat "+
