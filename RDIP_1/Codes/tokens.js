@@ -141,6 +141,8 @@ function create_stemmed_corpus(){
 
         var stemmed_corpus = [];
         
+        var unneccesary_words = new Set(["of","the","to","up","can","than","did","me","you","off","does","very"])
+
         var index = parseInt(corpus[corpus.length - 1]);
         var arr = paragraphs[index - 1].split(/[\s,.?\"]+/);
 
@@ -149,9 +151,18 @@ function create_stemmed_corpus(){
         }
         
         for(var i=0; i<arr.length-1 ; i++){
+
+                if(unneccesary_words.has(arr[i])){
+                        continue;
+                }
+
+                // alert(arr[i]);
+
                 stemmer.setCurrent(arr[i]);
                 stemmer.stem();
                 stemmed_corpus.push( stemmer.getCurrent() );
+
+                // alert(stemmed_corpus[i]);
         }
 
         stemmed_corpus = new Set(stemmed_corpus);

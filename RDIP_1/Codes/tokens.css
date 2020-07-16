@@ -2,33 +2,30 @@ body{
     font-family: "Lucida Grande","Lucida Sans Unicode", "Lucida Sans", Verdana,Arial,sans-serif;
 }
 
-.container{
-    margin:auto;
-    padding: 0px;
-    width: 1024px;
-    text-align: center;
-}
-
 .display-sections{
     width: 100%;
-    min-height: 700px;
+    height:100%;
     position: absolute;
     top: 0;
     left: 0;
-    padding-top: 30px;
-    padding-bottom: 40px;
     font-size: 16px;
     line-height: 24px;
     margin: 0 auto;
-    background: url(../../src/themes/blue-icon/images/content_bg.jpg);
+    background: url(https://images.wallpaperscraft.com/image/letters_metallic_silver_131886_1920x1080.jpg);
+    background-color: rgb(48, 47, 47);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     text-align: left;
 }
 
 .section-experiment{
+    margin-top: 30px;
     margin-left: 45px;
     margin-right: 45px;
+    background-color: rgba(209, 209, 216,0.92);
+    min-height: 695px;
+    padding:20px;
+    /* margin:0 auto; */
 }
 
 .head1{
@@ -40,7 +37,7 @@ body{
 
 .data{
     font-size: 16px;
-    color: #444444;
+    color: #313030;
     padding:10px;
     text-align: center;
 }
@@ -50,8 +47,8 @@ select{
     border-style: solid;
     border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
     text-align: left;
-    zoom:120%;
-    color:#444444;
+    zoom:150%;
+    color:#141313;
 }
 
 .experiment-area{
@@ -59,7 +56,7 @@ select{
 }
 
 #experiment-corpus, #experiment-table-head{
-    color: #444444;
+    color: #141313;
     line-height: 24px;
     padding-left:50px;
     padding-right:50px;
@@ -82,8 +79,8 @@ select{
 table,tr,td{
     margin-left: auto;
     margin-right: auto;
-    color: #444444;
-    border:2px solid rgb(195, 195, 195);
+    color: #141313;
+    border:2px solid rgb(83, 82, 82);
     border-collapse: collapse;
     padding:10px;
 }
@@ -100,7 +97,7 @@ input[type=submit], #continue,
 }
 
 input[type=text], #new-types-box{
-    color : #444444;
+    color : #141313;
     height:20px;
     text-align: center;
 }
@@ -122,4 +119,9 @@ input[type=text], #new-types-box{
     color: #FF0000;
     margin:5px;
 
+}
+
+button:hover, input[type=submit]:hover{
+    cursor: pointer;
+    border: 2px solid black;
 }
