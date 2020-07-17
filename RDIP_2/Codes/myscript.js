@@ -12,3 +12,34 @@ var sentence = '{"English":['+
     var obj = JSON.parse(sentence);
     alert(obj.English[0].a);
 */
+
+var language = "";
+
+function display_sentences_dropdown(){
+
+    language = document.getElementById('language').options[document.getElementById('language').selectedIndex].text;
+
+    if(language == "---Select Language---"){
+        clear();
+        alert('Select a Language');
+        return false;
+    }
+    else if(language == "English"){
+        document.getElementById('english').style.display = "initial";
+        document.getElementById('hindi').style.display = "none";
+    }
+    else if(language == "Hindi"){
+        document.getElementById('english').style.display = "none";
+        document.getElementById('hindi').style.display = "initial";
+    }
+
+    return true;
+
+}
+
+function clear(){
+
+    document.getElementById('english').style.display = "none";
+    document.getElementById('hindi').style.display = "none";
+
+}
